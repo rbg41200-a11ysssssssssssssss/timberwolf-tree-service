@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Timberwolf Tree Service | East Windsor, NJ</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bark: #2C2218;
+    --bark-mid: #4A3728;
+    --bark-light: #7A5C46;
+    --moss: #3B5C2F;
+    --moss-light: #5A7D4C;
+    --moss-bright: #7FAF6A;
+    --leaf: #A8C97A;
+    --cream: #F5F0E8;
+    --cream-dark: #EDE5D4;
+    --gold: #C8953A;
+    --gold-light: #E4B460;
+    --white: #FDFAF5;
+  }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Barlow', sans-serif;
+    background: var(--bark);
+    color: var(--cream);
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(44, 34, 24, 0.95);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(200,149,58,0.25);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1rem 3rem;
+  }
+  .nav-brand { display: flex; align-items: center; gap: 10px; }
+  .nav-logo { width: 38px; height: 38px; }
+  .nav-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem; font-weight: 700;
+    color: var(--gold-light); line-height: 1.1;
+  }
+  .nav-name span {
+    display: block; font-size: 0.65rem; font-family: 'Barlow', sans-serif;
+    font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase; color: var(--leaf);
+  }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a {
+    color: var(--cream); text-decoration: none; font-size: 0.85rem;
+    font-weight: 500; letter-spacing: 0.05em; text-transform: uppercase; transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--gold-light); }
+  .nav-cta {
+    background: var(--moss); color: var(--white);
+    border: none; padding: 0.6rem 1.4rem;
+    font-family: 'Barlow', sans-serif; font-size: 0.85rem; font-weight: 600;
+    letter-spacing: 0.05em; text-transform: uppercase;
+    border-radius: 3px; cursor: pointer; transition: background 0.2s;
+    text-decoration: none; display: inline-block;
+  }
+  .nav-cta:hover { background: var(--moss-light); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh; position: relative;
+    display: flex; align-items: center; justify-content: center;
+    overflow: hidden; padding: 8rem 2rem 5rem;
+  }
+  .hero-bg {
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse 80% 60% at 20% 50%, rgba(59,92,47,0.22) 0%, transparent 60%),
+      radial-gradient(ellipse 60% 80% at 80% 30%, rgba(90,125,76,0.12) 0%, transparent 50%),
+      linear-gradient(170deg, #1A1208 0%, #2C2218 40%, #1E1A10 100%);
+  }
+  .hero-trees {
+    position: absolute; bottom: 0; left: 0; right: 0; height: 45%;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 300'%3E%3Cg fill='%23152210' opacity='0.9'%3E%3Cpolygon points='50,300 80,180 110,300'/%3E%3Cpolygon points='65,300 95,140 125,300'/%3E%3Cpolygon points='150,300 185,160 220,300'/%3E%3Cpolygon points='165,300 195,120 225,300'/%3E%3Cpolygon points='260,300 295,150 330,300'/%3E%3Cpolygon points='350,300 390,130 430,300'/%3E%3Cpolygon points='375,300 410,100 445,300'/%3E%3Cpolygon points='490,300 530,145 570,300'/%3E%3Cpolygon points='600,300 640,155 680,300'/%3E%3Cpolygon points='615,300 650,110 685,300'/%3E%3Cpolygon points='720,300 758,140 796,300'/%3E%3Cpolygon points='830,300 865,125 900,300'/%3E%3Cpolygon points='848,300 878,95 908,300'/%3E%3Cpolygon points='940,300 980,148 1020,300'/%3E%3Cpolygon points='1060,300 1095,158 1130,300'/%3E%3Cpolygon points='1075,300 1110,118 1145,300'/%3E%3Cpolygon points='1150,300 1180,165 1210,300'/%3E%3C/g%3E%3Cg fill='%231E2E14' opacity='0.7'%3E%3Cpolygon points='0,300 35,200 70,300'/%3E%3Cpolygon points='200,300 235,175 270,300'/%3E%3Cpolygon points='440,300 478,162 516,300'/%3E%3Cpolygon points='680,300 718,138 756,300'/%3E%3Cpolygon points='900,300 938,170 976,300'/%3E%3Cpolygon points='1120,300 1155,180 1190,300'/%3E%3C/g%3E%3C/svg%3E");
+    background-size: cover; background-repeat: no-repeat; background-position: bottom;
+  }
+  .hero-content { position: relative; z-index: 2; text-align: center; max-width: 780px; }
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(200,149,58,0.12); border: 1px solid rgba(200,149,58,0.3);
+    color: var(--gold-light); font-size: 0.75rem; font-weight: 600;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    padding: 0.4rem 1rem; border-radius: 2px; margin-bottom: 1.5rem;
+  }
+  .hero-badge::before { content: '★'; }
+  .hero-h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(3.2rem, 7vw, 6rem); font-weight: 900;
+    line-height: 0.95; color: var(--white); margin-bottom: 0.4rem;
+  }
+  .hero-h1 em { font-style: normal; color: var(--moss-bright); display: block; }
+  .hero-sub {
+    font-size: 1.05rem; font-weight: 300; color: rgba(245,240,232,0.7);
+    margin: 1.5rem auto 2.5rem; max-width: 520px; line-height: 1.7; letter-spacing: 0.01em;
+  }
+  .hero-actions { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+  .btn-primary {
+    background: var(--gold); color: var(--bark); border: none; padding: 1rem 2.2rem;
+    font-family: 'Barlow', sans-serif; font-size: 0.9rem; font-weight: 700;
+    letter-spacing: 0.08em; text-transform: uppercase; border-radius: 3px;
+    cursor: pointer; text-decoration: none; transition: background 0.2s, transform 0.1s;
+    display: inline-block;
+  }
+  .btn-primary:hover { background: var(--gold-light); transform: translateY(-1px); }
+  .btn-outline {
+    background: transparent; color: var(--cream);
+    border: 1.5px solid rgba(245,240,232,0.35); padding: 1rem 2.2rem;
+    font-family: 'Barlow', sans-serif; font-size: 0.9rem; font-weight: 600;
+    letter-spacing: 0.08em; text-transform: uppercase; border-radius: 3px;
+    cursor: pointer; text-decoration: none; transition: border-color 0.2s, color 0.2s;
+    display: inline-block;
+  }
+  .btn-outline:hover { border-color: var(--gold-light); color: var(--gold-light); }
+  .isa-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(59,92,47,0.2); border: 1px solid rgba(90,125,76,0.3);
+    padding: 0.5rem 1.1rem; border-radius: 3px; margin-top: 2rem;
+  }
+  .isa-badge span {
+    font-size: 0.78rem; font-weight: 600; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--moss-bright);
+  }
+
+  /* STATS BAR */
+  .stats-bar {
+    background: var(--bark-mid);
+    border-top: 1px solid rgba(200,149,58,0.2);
+    border-bottom: 1px solid rgba(200,149,58,0.2);
+    padding: 1.8rem 3rem;
+    display: flex; justify-content: space-around; align-items: center;
+    flex-wrap: wrap; gap: 2rem;
+  }
+  .stat-item { text-align: center; }
+  .stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.2rem; font-weight: 700; color: var(--gold-light);
+    display: block; line-height: 1;
+  }
+  .stat-label {
+    font-size: 0.75rem; font-weight: 500; letter-spacing: 0.12em;
+    text-transform: uppercase; color: rgba(245,240,232,0.55); margin-top: 0.3rem;
+  }
+  .stat-divider { width: 1px; height: 40px; background: rgba(200,149,58,0.2); }
+
+  /* SECTION COMMON */
+  .section { padding: 6rem 3rem; }
+  .section-header { text-align: center; margin-bottom: 4rem; }
+  .section-eyebrow {
+    font-size: 0.72rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--moss-bright); margin-bottom: 0.8rem; display: block;
+  }
+  .section-h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 4vw, 3rem); font-weight: 700;
+    color: var(--white); line-height: 1.1;
+  }
+  .section-h2 em { font-style: normal; color: var(--gold-light); }
+  .section-desc {
+    font-size: 1rem; font-weight: 300; color: rgba(245,240,232,0.6);
+    max-width: 500px; margin: 1rem auto 0; line-height: 1.7;
+  }
+
+  /* SERVICES */
+  .services-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.5px; max-width: 1100px; margin: 0 auto;
+    border: 1.5px solid rgba(200,149,58,0.15);
+  }
+  .service-card {
+    background: var(--bark-mid); padding: 2.5rem 2rem;
+    transition: background 0.25s; cursor: default;
+    position: relative; overflow: hidden;
+  }
+  .service-card::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+    background: var(--moss); transform: scaleX(0); transform-origin: left;
+    transition: transform 0.3s ease;
+  }
+  .service-card:hover::before { transform: scaleX(1); }
+  .service-card:hover { background: #3A2A1E; }
+  .service-icon { width: 48px; height: 48px; margin-bottom: 1.2rem; color: var(--gold-light); }
+  .service-icon svg { width: 100%; height: 100%; }
+  .service-card h3 {
+    font-family: 'Playfair Display', serif; font-size: 1.25rem;
+    font-weight: 700; color: var(--white); margin-bottom: 0.7rem;
+  }
+  .service-card p {
+    font-size: 0.9rem; font-weight: 300; color: rgba(245,240,232,0.6); line-height: 1.65;
+  }
+
+  /* FIREWOOD */
+  .firewood-section {
+    padding: 6rem 3rem;
+    background:
+      radial-gradient(ellipse 70% 80% at 85% 50%, rgba(59,92,47,0.18) 0%, transparent 60%),
+      var(--bark);
+    display: flex; align-items: center; justify-content: center;
+    gap: 5rem; flex-wrap: wrap;
+  }
+  .firewood-text { max-width: 480px; }
+  .firewood-text h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 4vw, 2.8rem); font-weight: 700;
+    color: var(--white); line-height: 1.1; margin: 0.6rem 0 1rem;
+  }
+  .firewood-text h2 em { font-style: normal; color: var(--gold-light); }
+  .firewood-text p {
+    font-size: 0.95rem; font-weight: 300; color: rgba(245,240,232,0.65);
+    line-height: 1.7; margin-bottom: 0.8rem;
+  }
+  .wood-types { display: flex; flex-wrap: wrap; gap: 0.6rem; margin: 1.5rem 0 2rem; }
+  .wood-tag {
+    background: rgba(90,125,76,0.15); border: 1px solid rgba(90,125,76,0.3);
+    color: var(--moss-bright); font-size: 0.78rem; font-weight: 600;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    padding: 0.35rem 0.8rem; border-radius: 2px;
+  }
+  .log-stack { display: flex; flex-direction: column; align-items: center; gap: 4px; }
+  .log-row { display: flex; gap: 4px; }
+  .log {
+    width: 62px; height: 28px; border-radius: 14px;
+    background: linear-gradient(135deg, #6B4226 0%, #4A2E1A 60%, #3A2210 100%);
+    border: 1px solid rgba(200,149,58,0.15); position: relative; overflow: hidden;
+  }
+  .log::after {
+    content: ''; position: absolute; top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 18px; height: 18px; border-radius: 50%;
+    border: 2px solid rgba(200,149,58,0.25);
+    box-shadow: 0 0 0 4px rgba(200,149,58,0.1), 0 0 0 7px rgba(200,149,58,0.05);
+  }
+
+  /* REVIEWS */
+  .reviews-section {
+    background: var(--bark-mid); padding: 6rem 3rem;
+    border-top: 1px solid rgba(200,149,58,0.15);
+  }
+  .reviews-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem; max-width: 1000px; margin: 0 auto;
+  }
+  .review-card {
+    background: var(--bark); border: 1px solid rgba(200,149,58,0.12);
+    border-radius: 4px; padding: 1.8rem;
+  }
+  .review-stars { color: var(--gold); font-size: 0.85rem; letter-spacing: 2px; margin-bottom: 1rem; }
+  .review-text {
+    font-size: 0.92rem; font-weight: 300; color: rgba(245,240,232,0.75);
+    line-height: 1.7; font-style: italic; margin-bottom: 1.2rem;
+  }
+  .review-author {
+    font-size: 0.78rem; font-weight: 600; letter-spacing: 0.08em;
+    text-transform: uppercase; color: var(--moss-bright);
+  }
+  .review-rating-big {
+    text-align: center; margin-bottom: 3rem;
+    display: flex; align-items: center; justify-content: center; gap: 1.5rem; flex-wrap: wrap;
+  }
+  .rating-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 5rem; font-weight: 900; color: var(--gold-light); line-height: 1;
+  }
+  .rating-detail { text-align: left; }
+  .rating-stars { color: var(--gold); font-size: 1.3rem; letter-spacing: 4px; display: block; }
+  .rating-count { font-size: 0.8rem; color: rgba(245,240,232,0.5); font-weight: 300; margin-top: 0.3rem; }
+
+  /* CONTACT */
+  .contact-section {
+    padding: 6rem 3rem;
+    background: linear-gradient(160deg, #1A1208 0%, #2C2218 100%);
+    text-align: center;
+  }
+  .contact-info {
+    display: flex; justify-content: center; gap: 4rem;
+    flex-wrap: wrap; margin: 3rem 0; align-items: center;
+  }
+  .contact-label {
+    font-size: 0.72rem; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--moss-bright); margin-bottom: 0.4rem; display: block;
+  }
+  .contact-value {
+    font-family: 'Playfair Display', serif; font-size: 1.3rem; color: var(--white);
+    text-decoration: none; transition: color 0.2s; display: block;
+  }
+  .contact-value:hover { color: var(--gold-light); }
+  .contact-value.small {
+    font-family: 'Barlow', sans-serif; font-size: 0.95rem;
+    font-weight: 300; color: rgba(245,240,232,0.7);
+  }
+  .contact-divider { width: 1px; height: 50px; background: rgba(200,149,58,0.2); }
+  .contact-actions { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-top: 1rem; }
+
+  /* FOOTER */
+  footer {
+    background: #0E0C08; border-top: 1px solid rgba(200,149,58,0.1);
+    padding: 2rem 3rem;
+    display: flex; align-items: center; justify-content: space-between;
+    flex-wrap: wrap; gap: 1rem;
+  }
+  .footer-brand {
+    font-family: 'Playfair Display', serif; font-size: 1rem;
+    color: var(--bark-light); font-weight: 700;
+  }
+  .footer-links { display: flex; gap: 1.5rem; }
+  .footer-links a {
+    color: rgba(245,240,232,0.35); font-size: 0.8rem; text-decoration: none;
+    text-transform: uppercase; letter-spacing: 0.08em; transition: color 0.2s;
+  }
+  .footer-links a:hover { color: var(--gold-light); }
+  .footer-cert { font-size: 0.78rem; color: rgba(245,240,232,0.3); font-weight: 300; }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { display: none; }
+    .section { padding: 4rem 1.5rem; }
+    .stats-bar { padding: 1.5rem; }
+    .stat-divider { display: none; }
+    .firewood-section { padding: 4rem 1.5rem; gap: 3rem; }
+    .contact-info { gap: 2rem; }
+    .contact-divider { display: none; }
+    footer { flex-direction: column; text-align: center; padding: 1.5rem; }
+    .footer-links { justify-content: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAVIGATION -->
+<nav>
+  <div class="nav-brand">
+    <svg class="nav-logo" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M20 4 L28 18 H24 L30 28 H22 L22 36 H18 L18 28 H10 L16 18 H12 Z" fill="#5A7D4C"/>
+      <circle cx="20" cy="2" r="2" fill="#7FAF6A"/>
+    </svg>
+    <div class="nav-name">Timberwolf <span>Tree Service · East Windsor, NJ</span></div>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#firewood">Firewood</a></li>
+    <li><a href="#reviews">Reviews</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="tel:6099181668" class="nav-cta">Call Now</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-trees"></div>
+  <div class="hero-content">
+    <div class="hero-badge">30+ Years Serving New Jersey</div>
+    <h1 class="hero-h1">
+      Trusted Tree Care<em>Done Right.</em>
+    </h1>
+    <p class="hero-sub">ISA Certified Arborist. Local family-owned. From tree removal and stump grinding to premium firewood and mulch — we treat your property like our own.</p>
+    <div class="hero-actions">
+      <a href="tel:6099181668" class="btn-primary">Get a Free Quote</a>
+      <a href="#services" class="btn-outline">Our Services</a>
+    </div>
+    <div class="isa-badge">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#7FAF6A" stroke-width="2">
+        <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+      </svg>
+      <span>ISA Certified Arborist &nbsp;·&nbsp; 4.6★ Google &nbsp;·&nbsp; 4.9★ Angi</span>
+    </div>
+  </div>
+</section>
+
+<!-- STATS BAR -->
+<div class="stats-bar">
+  <div class="stat-item">
+    <span class="stat-num">30+</span>
+    <div class="stat-label">Years Experience</div>
+  </div>
+  <div class="stat-divider"></div>
+  <div class="stat-item">
+    <span class="stat-num">4.9</span>
+    <div class="stat-label">Angi Rating</div>
+  </div>
+  <div class="stat-divider"></div>
+  <div class="stat-item">
+    <span class="stat-num">ISA</span>
+    <div class="stat-label">Certified Arborist</div>
+  </div>
+  <div class="stat-divider"></div>
+  <div class="stat-item">
+    <span class="stat-num">Local</span>
+    <div class="stat-label">Family Owned</div>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section class="section" id="services" style="background: var(--bark);">
+  <div class="section-header">
+    <span class="section-eyebrow">What We Do</span>
+    <h2 class="section-h2">Professional <em>Tree Services</em></h2>
+    <p class="section-desc">Pro crews with the right equipment for every job, big or small.</p>
+  </div>
+  <div class="services-grid">
+    <div class="service-card">
+      <div class="service-icon">
+        <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M24 8 C18 8 10 14 10 22 C10 28 14 32 20 33 L20 42 L28 42 L28 33 C34 32 38 28 38 22 C38 14 30 8 24 8Z"/>
+          <path d="M24 18 L24 8"/>
+          <path d="M16 24 C18 20 22 18 24 18 C26 18 30 20 32 24"/>
+        </svg>
+      </div>
+      <h3>Tree Removal</h3>
+      <p>Safe, efficient removal of hazardous, dead, or unwanted trees. We protect your property throughout every step.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">
+        <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="24" cy="28" r="8"/>
+          <path d="M24 36 L24 42"/>
+          <path d="M18 42 L30 42"/>
+          <path d="M12 20 C14 16 18 14 24 14"/>
+          <path d="M36 20 C34 16 30 14 24 14"/>
+          <path d="M8 28 C8 20 14 14 22 12"/>
+          <path d="M40 28 C40 20 34 14 26 12"/>
+        </svg>
+      </div>
+      <h3>Stump Grinding</h3>
+      <p>Complete stump removal using professional grinding equipment. Clean results that let you reclaim your yard.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">
+        <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M10 38 L24 10 L38 38"/>
+          <path d="M16 28 L32 28"/>
+          <path d="M24 10 L24 6"/>
+          <path d="M14 18 C18 16 24 15 30 18"/>
+        </svg>
+      </div>
+      <h3>Tree Trimming</h3>
+      <p>Expert pruning and trimming to improve structure, health, and appearance — performed by certified arborists.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">
+        <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="8" y="28" width="32" height="12" rx="2"/>
+          <path d="M14 28 L14 20 Q14 14 20 12 L28 10 Q34 10 34 16 L34 28"/>
+          <path d="M10 34 L38 34"/>
+        </svg>
+      </div>
+      <h3>Mulch Delivery</h3>
+      <p>Top-quality, locally-sourced mulch delivered to your door. Perfect for landscaping, gardens, and tree beds.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">
+        <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 40 L12 22 L24 14 L36 22 L36 40"/>
+          <path d="M20 40 L20 30 L28 30 L28 40"/>
+          <path d="M8 22 L24 12 L40 22"/>
+        </svg>
+      </div>
+      <h3>Firewood Supply</h3>
+      <p>Seasoned, split firewood available in hardwood varieties including cherry. Quick delivery, fair pricing.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">
+        <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="24" cy="24" r="14"/>
+          <path d="M24 10 L24 6"/>
+          <path d="M24 42 L24 38"/>
+          <path d="M10 24 L6 24"/>
+          <path d="M42 24 L38 24"/>
+          <path d="M18 18 L24 24 L30 24"/>
+        </svg>
+      </div>
+      <h3>Arborist Consulting</h3>
+      <p>ISA Certified Arborist assessments for tree health, risk evaluation, and expert recommendations.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FIREWOOD -->
+<section class="firewood-section" id="firewood">
+  <div class="firewood-text">
+    <span class="section-eyebrow">Premium Local Firewood</span>
+    <h2>Warm Your Home with <em>Quality Wood</em></h2>
+    <p>We supply top-quality, locally-sourced firewood across New Jersey. Properly seasoned hardwoods that burn hot, clean, and long — exactly what your fireplace deserves.</p>
+    <p>Orders are fulfilled quickly with competitive pricing. Our customers consistently praise the quality and service.</p>
+    <div class="wood-types">
+      <span class="wood-tag">Cherry</span>
+      <span class="wood-tag">Oak</span>
+      <span class="wood-tag">Mixed Hardwood</span>
+      <span class="wood-tag">Split &amp; Seasoned</span>
+    </div>
+    <a href="tel:6099181668" class="btn-primary">Order Firewood</a>
+  </div>
+  <div class="firewood-visual">
+    <div class="log-stack">
+      <div class="log-row"><div class="log"></div><div class="log"></div><div class="log"></div></div>
+      <div class="log-row"><div class="log"></div><div class="log"></div></div>
+      <div class="log-row"><div class="log"></div><div class="log"></div><div class="log"></div></div>
+      <div class="log-row"><div class="log"></div><div class="log"></div><div class="log"></div><div class="log"></div></div>
+      <div class="log-row"><div class="log"></div><div class="log"></div><div class="log"></div></div>
+      <div class="log-row"><div class="log"></div><div class="log"></div><div class="log"></div><div class="log"></div><div class="log"></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section class="reviews-section" id="reviews">
+  <div class="section-header">
+    <span class="section-eyebrow">What Customers Say</span>
+    <h2 class="section-h2">A Reputation <em>Built on Trust</em></h2>
+  </div>
+  <div class="review-rating-big">
+    <div class="rating-num">4.9</div>
+    <div class="rating-detail">
+      <span class="rating-stars">★★★★★</span>
+      <div class="rating-count">Based on 31 Angi reviews &amp; 68 Google reviews</div>
+    </div>
+  </div>
+  <div class="reviews-grid">
+    <div class="review-card">
+      <div class="review-stars">★★★★★</div>
+      <p class="review-text">"Excellent and honest company with professional and hardworking staff. Couldn't be happier with the results."</p>
+      <div class="review-author">Google Review</div>
+    </div>
+    <div class="review-card">
+      <div class="review-stars">★★★★★</div>
+      <p class="review-text">"Quick delivery and a great price for some really nice Cherry wood. Will definitely be ordering again this winter."</p>
+      <div class="review-author">Google Review</div>
+    </div>
+    <div class="review-card">
+      <div class="review-stars">★★★★★</div>
+      <p class="review-text">"Great communication, delivered on time, and great customer service. Exactly what you want from a local business."</p>
+      <div class="review-author">Google Review</div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact-section" id="contact">
+  <span class="section-eyebrow">Get in Touch</span>
+  <h2 class="section-h2" style="text-align:center; font-size: clamp(2rem,4vw,2.8rem); margin-top:0.5rem;">Ready to Get Started?</h2>
+  <p style="color: rgba(245,240,232,0.55); font-size:0.95rem; font-weight:300; margin-top:0.8rem;">Call us or stop by. We're a local family business and we'd love to help.</p>
+  <div class="contact-info">
+    <div class="contact-item">
+      <span class="contact-label">Call Us</span>
+      <a href="tel:6099181668" class="contact-value">(609) 918-1668</a>
+    </div>
+    <div class="contact-divider"></div>
+    <div class="contact-item">
+      <span class="contact-label">Our Location</span>
+      <span class="contact-value small">94 Disbrow Hill Rd<br>East Windsor, NJ 08520</span>
+    </div>
+    <div class="contact-divider"></div>
+    <div class="contact-item">
+      <span class="contact-label">Hours</span>
+      <span class="contact-value small">Mon–Fri: 6 AM – 5 PM<br>Sat: 6 AM – 12 PM</span>
+    </div>
+  </div>
+  <div class="contact-actions">
+    <a href="tel:6099181668" class="btn-primary">Call (609) 918-1668</a>
+    <a href="http://www.timberwolftreeservice.com/" target="_blank" class="btn-outline">Visit Website</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-brand">Timberwolf Tree Service</div>
+  <div class="footer-links">
+    <a href="#services">Services</a>
+    <a href="#firewood">Firewood</a>
+    <a href="#contact">Contact</a>
+    <a href="http://www.timberwolftreeservice.com/" target="_blank">Website</a>
+  </div>
+  <div class="footer-cert">ISA Certified Arborist &nbsp;·&nbsp; East Windsor, NJ &nbsp;·&nbsp; Est. 30+ Years</div>
+</footer>
+
+</body>
+</html>
